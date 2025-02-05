@@ -9,6 +9,8 @@ const logger = require("@bedrockio/logger");
 const { getBrowser, getPageCount } = require("./utils/browser");
 const yd = require("@bedrockio/yada");
 
+const cors = require('@koa/cors');
+
 function urlCustom(value, { root }) {
   if ((value && root.html) || (!value && !root.html)) {
     throw new Error("Either url or html is required");
@@ -26,7 +28,8 @@ const app = new Koa();
 app
   .use(errorHandler)
   .use(logger.middleware())
-  .use(bodyParser({ multipart: true }));
+  .use(bodyParser({ multipart: true }))
+  .use(cors());
 
 const router = new Router();
 app.router = router;
