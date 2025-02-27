@@ -129,7 +129,7 @@ router.post(
           "A5",
           "A6"
         )
-        .default("Letter"),
+        .default(undefined),
       margin: yd.object({
         top: yd.string(),
         right: yd.string(),
